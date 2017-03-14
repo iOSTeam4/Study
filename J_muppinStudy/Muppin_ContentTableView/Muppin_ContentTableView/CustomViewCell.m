@@ -36,14 +36,17 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
+    NSLog(@"init");
     if (self) {
         [self creatSubviews];
+        NSLog(@"%f", self.frame.size.height);
     }
     return self;
 }
 
 - (void)layoutSubviews {
+    NSLog(@"layoutSubviews");
+    NSLog(@"%f", self.frame.size.height);
     [self updateLayout];
 }
 
@@ -117,6 +120,9 @@
     
     self.address.frame = CGRectMake(self.mattBar.frame.size.width + 10, offsetY +30, self.imgView.frame.size.width - 10, 20);
     self.offsetH = HEADER_MARGIN + PROFILE_HEIGHT + self.contentView.frame.size.width + FOOTER_MARGIN;
+    
+    
+    [self.delegate contextHeight:self.textLabel.frame.size.height];
 }
 
 

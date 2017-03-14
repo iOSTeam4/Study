@@ -13,6 +13,21 @@
 #define HEADER_MARGIN 20
 #define FOOTER_MARGIN 20
 
+
+@protocol CustomViewCellDelegate;
+
+
+
 @interface CustomViewCell : UITableViewCell
+
+@property (nonatomic) id<CustomViewCellDelegate> delegate;
+
+@end
+
+
+@protocol CustomViewCellDelegate <NSObject>
+
+@optional
+- (void)contextHeight:(CGFloat)height;
 
 @end

@@ -9,10 +9,11 @@
 #import "ViewController.h"
 #import "CustomViewCell.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, CustomViewCellDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
-
+@property (nonatomic) NSArray *dataArray;
+@property (nonatomic) CGFloat height;
 
 @end
 
@@ -20,6 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.dataArray = @[@{@"photo":@"deadpool", @"context":@"가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아"},
+                       @{@"photo":@"deadpool", @"context":@""},
+                       @{@"photo":@"", @"context":@"가나다라마바사아가나다라마바사가나다라마바사아가나다라마바사"}];
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -40,12 +45,12 @@
 
 // tavleView delegate methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 20;
+    NSLog(@"numberOfRowsInSection");
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSLog(@"cellForRowAtIndexPath");
     CustomViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
@@ -54,13 +59,25 @@
     }
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    cell.delegate = self;
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
+    NSLog(@"heightForRowAtIndexPath");
     return HEADER_MARGIN + PROFILE_HEIGHT + MATTBAR_HEIGHT + self.tableView.frame.size.width + FOOTER_MARGIN;
+
 }
+
+- (void)contextHeight:(CGFloat)height {
+    
+    self.height = height;
+    
+}
+
 
 
 @end
