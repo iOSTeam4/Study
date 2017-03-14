@@ -11,6 +11,9 @@
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, weak) UITableView *tableView;
+
+
 @end
 
 @implementation ViewController
@@ -18,11 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame];
+    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     [self.view addSubview:tableView];
     tableView.delegate = self;
     tableView.dataSource = self;
+    self.tableView = tableView;
 
 
 }
@@ -47,13 +52,14 @@
         cell = [[CustomViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         
     }
-        
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 1000;
+    return HEADER_MARGIN + PROFILE_HEIGHT + MATTBAR_HEIGHT + self.tableView.frame.size.width + FOOTER_MARGIN;
 }
 
 
