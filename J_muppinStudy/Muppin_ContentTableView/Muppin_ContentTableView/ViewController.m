@@ -8,12 +8,13 @@
 
 #import "ViewController.h"
 #import "CustomViewCell.h"
+#import "DataCenter.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, CustomViewCellDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic) NSArray *dataArray;
-@property (nonatomic) CGFloat height;
+@property (nonatomic) CGFloat currentCellHeight;
 
 @end
 
@@ -22,9 +23,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataArray = @[@{@"photo":@"deadpool", @"context":@"가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아"},
-                       @{@"photo":@"deadpool", @"context":@""},
-                       @{@"photo":@"", @"context":@"가나다라마바사아가나다라마바사가나다라마바사아가나다라마바사"}];
+//    UILabel *context = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 30)];
+//
+//    [context setNumberOfLines:0];
+//    [context setLineBreakMode:NSLineBreakByWordWrapping];
+//    [context setPreferredMaxLayoutWidth:self.view.frame.size.width];
+//    [context setText:@"가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아"];
+//    
+//    [context sizeToFit];
+//    
+//    [self.view addSubview:context];
+//    
+//    [context setBackgroundColor:[UIColor redColor]];
+    
+
+    self.currentCellHeight = 0.0;
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -46,7 +59,7 @@
 // tavleView delegate methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"numberOfRowsInSection");
-    return self.dataArray.count;
+    return [DataCenter sharedInstance].dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,20 +75,29 @@
     
     cell.delegate = self;
     
+    [cell setContentsWithIndexPath:indexPath];
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSLog(@"heightForRowAtIndexPath");
-    return HEADER_MARGIN + PROFILE_HEIGHT + MATTBAR_HEIGHT + self.tableView.frame.size.width + FOOTER_MARGIN;
+    return self.currentCellHeight;
 
 }
 
-- (void)contextHeight:(CGFloat)height {
+- (void)contextHeight:(CGFloat)cellHeight hasImg:(BOOL)hasImg {
     
-    self.height = height;
+    self.currentCellHeight = PROFILE_HEIGHT + MATTBAR_HEIGHT + FOOTER_MARGIN;
     
+    if (hasImg) {
+        self.currentCellHeight += HEADER_MARGIN + self.tableView.frame.size.width;
+    }
+    
+    if (cellHeight != 0) {
+        self.currentCellHeight += cellHeight + HEADER_MARGIN;
+    }
 }
 
 

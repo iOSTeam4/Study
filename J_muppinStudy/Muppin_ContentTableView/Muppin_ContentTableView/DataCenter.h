@@ -10,4 +10,8 @@
 
 @interface DataCenter : NSObject
 
++ (instancetype)sharedInstance;
+
+@property (nonatomic) NSArray *dataArray;
+
 @end

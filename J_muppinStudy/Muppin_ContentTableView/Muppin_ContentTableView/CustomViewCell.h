@@ -22,12 +22,14 @@
 
 @property (nonatomic) id<CustomViewCellDelegate> delegate;
 
+- (void)setContentsWithIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 
 @protocol CustomViewCellDelegate <NSObject>
 
 @optional
-- (void)contextHeight:(CGFloat)height;
+- (void)contextHeight:(CGFloat)cellHeight hasImg:(BOOL)hasImg;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF1B19EC1E782BA00031884E /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B19EB1E782BA00031884E /* DataCenter.m */; };
 		EF1D02AB1E77884E0001005A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1D02AA1E77884E0001005A /* 1.png */; };
 		EF1D02AF1E7789BB0001005A /* deadpool.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1D02AE1E7789BB0001005A /* deadpool.png */; };
 		EF2244F51E76B77A0061E361 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF2244F41E76B77A0061E361 /* main.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF1B19EA1E782BA00031884E /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
+		EF1B19EB1E782BA00031884E /* DataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCenter.m; sourceTree = "<group>"; };
 		EF1D02AA1E77884E0001005A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		EF1D02AE1E7789BB0001005A /* deadpool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deadpool.png; sourceTree = "<group>"; };
 		EF2244F01E76B77A0061E361 /* Muppin_ContentTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muppin_ContentTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +81,8 @@
 				EF2245011E76B77A0061E361 /* LaunchScreen.storyboard */,
 				EF2245041E76B77A0061E361 /* Info.plist */,
 				EF2244F31E76B77A0061E361 /* Supporting Files */,
+				EF1B19EA1E782BA00031884E /* DataCenter.h */,
+				EF1B19EB1E782BA00031884E /* DataCenter.m */,
 			);
 			path = Muppin_ContentTableView;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF2244FB1E76B77A0061E361 /* ViewController.m in Sources */,
+				EF1B19EC1E782BA00031884E /* DataCenter.m in Sources */,
 				EF22450C1E76C5330061E361 /* CustomViewCell.m in Sources */,
 				EF2244F81E76B77A0061E361 /* AppDelegate.m in Sources */,
 				EF2244F51E76B77A0061E361 /* main.m in Sources */,
